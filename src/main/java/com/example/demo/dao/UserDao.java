@@ -5,12 +5,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 @Repository
 public class UserDao {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    // Save a new user
     public int save(User user) {
         String sql = "INSERT INTO users (name, email, age) VALUES (?, ?, ?)";
         return jdbcTemplate.update(sql,
@@ -18,5 +23,19 @@ public class UserDao {
                 user.getEmail(),
                 user.getAge());
     }
-}
 
+    // Fetch all users list
+    public List<User> findAll() {
+        String sql = "SELECT * FROM users ORDER BY id DESC";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> mapRowToUser(rs));
+    }
+
+    private User mapRowToUser(ResultSet rs) throws SQLException {
+        User user = new User();
+        user.setId(rs.getInt("id"));
+        user.setName(rs.getString("name"));
+        user.setEmail(rs.getString("email"));
+        user.setAge(rs.getInt("age"));
+        return user;
+    }
+}
