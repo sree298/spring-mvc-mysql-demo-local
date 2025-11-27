@@ -19,3 +19,12 @@ CREATE TABLE users (
 
 
 ```
+**Delete all rows but keep the table**
+```bash
+DELETE FROM users;
+```
+**Drop the table completely**
+This will remove the table and all its data permanently:
+```bash
+DROP TABLE users;
+```
