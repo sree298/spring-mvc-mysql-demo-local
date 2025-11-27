@@ -33,3 +33,6 @@ This will remove the table and all its data permanently:
 ```bash
 DROP TABLE users;
 ```
+```bash
+http://localhost:8081/spring-mvc-mysql-demo-local
+```
