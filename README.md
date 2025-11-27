@@ -1,6 +1,8 @@
 ```bash
 mysql -u demo_user -p
 Enter password: demo123
+OR
+mysql -u demo_user -pdemo123
 mysql> show databases;
 mysql> use demo_db;
 mysql> show tables;
