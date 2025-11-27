@@ -1,5 +1,10 @@
 ## Tomcat9
-
+# spring-mvc-mysql-demo-local
+1. **Build the WAR** 
+```bash
+cd spring-mvc-mysql-demo-local
+mvn clean package
+```
 ```bash
 mysql -u demo_user -p
 Enter password: demo123
