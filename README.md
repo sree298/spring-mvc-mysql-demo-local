@@ -1,4 +1,9 @@
-## Tomcat9
+## Tomcat9 download
+```bash
+https://tomcat.apache.org/download-90.cgi
+wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.112/bin/apache-tomcat-9.0.112.tar.gz
+tar -xvf apache-tomcat-9.0.112.tar.gz
+```
 # spring-mvc-mysql-demo-local
 1. **Build the WAR** 
 ```bash
