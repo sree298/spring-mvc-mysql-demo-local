@@ -1,24 +1,39 @@
+# spring-mvc-mysql-demo-local
 ## Tomcat9 download
 ```bash
 https://tomcat.apache.org/download-90.cgi
 wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.112/bin/apache-tomcat-9.0.112.tar.gz
 tar -xvf apache-tomcat-9.0.112.tar.gz
+cd apache-tomcat-9.0.112/conf
+vi tomcat-users.xml
 ```
-# spring-mvc-mysql-demo-local
-1. **Build the WAR** 
+**add the below lines in tomcat-users.xml**
 ```bash
-cd spring-mvc-mysql-demo-local
-mvn clean package
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<user username="admin" password="admin" roles="manager-gui,admin-gui"/>
 ```
+**Mysql confifuraion**
 ```bash
-mysql -u demo_user -p
-Enter password: demo123
+sudo mysql -u root  # <!-- click on enter -->
+USE mysql;
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+FLUSH PRIVILEGES;
+EXIT;
+sudo service mysql restart
+sudo mysql -u root -p
 OR
 mysql -u demo_user -pdemo123
+CREATE USER 'demo_user'@'localhost' IDENTIFIED BY 'demo123';
+GRANT ALL PRIVILEGES ON *.* TO 'demo_user'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+mysql> show databases;
+CREATE DATABASE demo_db;
 mysql> show databases;
 mysql> use demo_db;
 mysql> show tables;
 ```
+**create the users table**
 ```bash
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -26,7 +41,13 @@ CREATE TABLE users (
   email VARCHAR(50),
   age INT
 );
+```
 
+1. **Build the WAR** 
+```bash
+cd spring-mvc-mysql-demo-local
+mvn clean package
+```
 
 ```
 **Delete all rows but keep the table**
