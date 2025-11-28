@@ -48,8 +48,6 @@ CREATE TABLE users (
 cd spring-mvc-mysql-demo-local
 mvn clean package
 ```
-
-```
 **Delete all rows but keep the table**
 ```bash
 DELETE FROM users;
