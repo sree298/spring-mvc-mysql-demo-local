@@ -39,7 +39,9 @@ public class WebConfig implements WebMvcConfigurer {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
 
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/demo_db?useSSL=false&serverTimezone=UTC");
+        //dataSource.setUrl("jdbc:mysql://localhost:3306/demo_db?useSSL=false&serverTimezone=UTC");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/demo_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC");
+
         dataSource.setUsername("demo_user");
         dataSource.setPassword("demo123");
 
